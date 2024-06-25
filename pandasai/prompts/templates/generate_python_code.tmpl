@@ -8,11 +8,12 @@ There is already a variable `dfs: List[pd.DataFrame]`. The sample data is below:
 {% if last_code_generated != "" and context.memory.count() > 0 %}
 {{ last_code_generated }}
 {% else %}
-Update this initial code:
+Update the below initial code. Please note the variable `dfs` already exists, use this variable for the source data.
 ```python
 # TODO: import the required dependencies
 import pandas as pd
-
+# There is already a variable `dfs: List[pd.DataFrame]`. The sample data for each element has been provided in the above <dataframe> section.
+# Use data from the variable `dfs: List[pd.DataFrame]` to generate code.
 # Write code here
 
 # Declare result var: {% include 'shared/output_type_template.tmpl' with context %}
@@ -21,11 +22,9 @@ import pandas as pd
 {% include 'shared/vectordb_docs.tmpl' with context %}
 {{ context.memory.get_last_message() }}
 
-Variable `dfs: list[pd.DataFrame]` is already declared.
-
 At the end, declare "result" variable as a dictionary of type and value.
 {% if viz_lib %}
-If you are asked to plot a chart, use "{{viz_lib}}" for charts, save as png.
+Don't plot chart unless you are specifically asked to. If you are specifically asked to plot a chart, use "{{viz_lib}}" for generating charts.
 {% endif %}
 
 Generate python code and return full updated code:
