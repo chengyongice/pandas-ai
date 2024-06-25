@@ -1,3 +1,5 @@
+There is already a variable `dfs: List[pd.DataFrame]`. The sample data is below:
+
 {% for df in context.dfs %}{% set index = loop.index %}{% include 'shared/dataframe.tmpl' with context %}{% endfor %}
 
 {% if context.skills_manager.has_skills() %}
