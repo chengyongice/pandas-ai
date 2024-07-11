@@ -106,6 +106,9 @@ class SmartDataframe:
         Add Skills to PandasAI
         """
         self._agent.add_skills(*skills)
+    
+    def start_new_conversation(self):
+        self._agent.start_new_conversation()
 
     def chat(self, query: str, output_type: Optional[str] = None):
         """
@@ -176,6 +179,14 @@ class SmartDataframe:
     @property
     def last_code_executed(self):
         return self._agent.last_code_executed
+    
+    @property
+    def last_result(self):
+        return self._agent.last_result
+    
+    @property
+    def last_pipeline_success(self):
+        return self._agent.last_pipeline_success
 
     def original_import(self):
         return self._original_import

@@ -169,6 +169,9 @@ class GenerateChatPipeline:
 
     def get_last_track_log_id(self):
         return self.query_exec_tracker.last_log_id
+    
+    def get_last_execution_success(self):
+        return self.query_exec_tracker.success
 
     def run_generate_code(self, input: ChatPipelineInput) -> dict:
         """

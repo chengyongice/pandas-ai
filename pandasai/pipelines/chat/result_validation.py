@@ -53,6 +53,6 @@ class ResultValidation(BaseLogicUnit):
                     message = "Output Validation Successful"
 
             pipeline_context.add("last_result", result)
-            logger.log(f"Answer: {result}")
+            # logger.log(f"Answer: {result}")
 
         return LogicUnitOutput(result, success, message)

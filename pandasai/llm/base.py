@@ -78,7 +78,7 @@ class LLM:
             str: Polished code.
 
         """
-        if re.match(r"^(python|py)", code):
+        if re.match(r"^(python|py|Python)", code):
             code = re.sub(r"^(python|py)", "", code)
         if re.match(r"^`.*`$", code):
             code = re.sub(r"^`(.*)`$", r"\1", code)

@@ -1,5 +1,5 @@
-There is already a variable `dfs: List[pd.DataFrame]`. The sample data is below:
-
+There is already a variable `dfs: List[pd.DataFrame]`. It is a list of dataframes. Each dataframe may not share same schema. The schema for all dataframes along with first couple of rows data is below:
+===The schema and first couple of rows for each dataframe in the list `dfs`: 
 {% for df in context.dfs %}{% set index = loop.index %}{% include 'shared/dataframe.tmpl' with context %}{% endfor %}
 
 {% if context.skills_manager.has_skills() %}
@@ -8,12 +8,21 @@ There is already a variable `dfs: List[pd.DataFrame]`. The sample data is below:
 {% if last_code_generated != "" and context.memory.count() > 0 %}
 {{ last_code_generated }}
 {% else %}
-Update the below initial code. Please note the variable `dfs` already exists, use this variable for the source data.
+Update the below initial code. Please follow the below guildlines:
+1. Please note the variable `dfs` already exists, use this variable for the source data.
+2. Only use columns provided in the above schema. Do not use any other columns.
+3. If there is only one dataframe in the `dfs`, use `df = dfs[0]` to get the dataframe to work on.
+4. Try you best to use the provided function to update code to answer user query.
+5. If the provided function can be used to answer user query, do not use any other libraries.
+6. Before importing other libraries or functions, make sure to check whether the provided function can be used.
+8. There is no need to import the provided function.
+7. After the updated code has been generated, please make sure to remove any unused import.
+
+===The initial code:
 ```python
 # TODO: import the required dependencies
 import pandas as pd
 # There is already a variable `dfs: List[pd.DataFrame]`. The sample data for each element has been provided in the above <dataframe> section.
-# Use data from the variable `dfs: List[pd.DataFrame]` to generate code.
 # Write code here
 
 # Declare result var: {% include 'shared/output_type_template.tmpl' with context %}
@@ -22,9 +31,9 @@ import pandas as pd
 {% include 'shared/vectordb_docs.tmpl' with context %}
 {{ context.memory.get_last_message() }}
 
-At the end, declare "result" variable as a dictionary of type and value.
+At the end, declare `result` variable as a dictionary of `type` and `value`. The `type` must be one of four possible values: "string", "number", "dataframe" and "plot".
 {% if viz_lib %}
-Don't plot chart unless you are specifically asked to. If you are specifically asked to plot a chart, use "{{viz_lib}}" for generating charts.
+Don't plot chart unless you are specifically asked to. If you are specifically asked to plot a chart, use "{{viz_lib}}" for generating a `Figure` object and put it into `result` dictionary. Don't create a picture file.
 {% endif %}
 
 Generate python code and return full updated code:
