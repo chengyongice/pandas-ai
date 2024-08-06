@@ -78,7 +78,7 @@ class SkillsManager:
         if len(self.skills) == 0:
             return None
 
-        return f"You are already provided with the following functions that you can call:\n{self}"
+        return f"You are already provided with the following multiple functions separate by the xml tag <function> that you can call. Please choose one based on the user query.\n{self}"
 
     def to_object(self) -> str:
         return [skill.stringify() for skill in self.skills]

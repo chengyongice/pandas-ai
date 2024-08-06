@@ -1,5 +1,5 @@
 There is already a variable `dfs: List[pd.DataFrame]`. It is a list of dataframes. Each dataframe may not share same schema. The schema for all dataframes along with first couple of rows data is below:
-===The schema and first couple of rows for each dataframe in the list `dfs`: 
+===The schema and first couple of rows for each dataframe in the list `dfs`:
 {% for df in context.dfs %}{% set index = loop.index %}{% include 'shared/dataframe.tmpl' with context %}{% endfor %}
 
 {% if context.skills_manager.has_skills() %}
@@ -12,11 +12,12 @@ Update the below initial code. Please follow the below guildlines:
 1. Please note the variable `dfs` already exists, use this variable for the source data.
 2. Only use columns provided in the above schema. Do not use any other columns.
 3. If there is only one dataframe in the `dfs`, use `df = dfs[0]` to get the dataframe to work on.
-4. Try you best to use the provided function to update code to answer user query.
+4. Try you best to use the minimum provided function to update code to answer user query.
 5. If the provided function can be used to answer user query, do not use any other libraries.
 6. Before importing other libraries or functions, make sure to check whether the provided function can be used.
-8. There is no need to import the provided function.
-7. After the updated code has been generated, please make sure to remove any unused import.
+7. There is no need to import the provided function.
+8. After the updated code has been generated, please make sure to remove any unused import.
+
 
 ===The initial code:
 ```python
