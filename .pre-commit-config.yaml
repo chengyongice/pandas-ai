@@ -4,16 +4,31 @@ repos:
     hooks:
       - id: ruff
         name: ruff
+        args: [--fix, --select=I, pandasai, examples, tests]
       - id: ruff-format
         name: ruff-format
+  - repo: https://github.com/python-poetry/poetry
+    rev: 2.0.1
+    hooks:
+      - id: poetry-check  # Ensures your `pyproject.toml` is valid
+      - id: poetry-lock   # Ensures the `poetry.lock` file is in sync with `pyproject.toml`
   - repo: local
     hooks:
-      - id: pytest-check
-        name: pytest-check
-        entry: poetry run pytest tests --ignore=tests/integration_tests
+      - id: install-deps
+        name: install-deps
+        entry: make install_deps install_extension_deps
         language: system
         pass_filenames: false
         always_run: true
+        stages: [commit]
+
+      - id: pytest-check
+        name: pytest-check
+        entry: make test_all
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit]
 
   - repo: https://github.com/sourcery-ai/sourcery
     rev: v1.11.0
